@@ -8,7 +8,10 @@
 
 class Class1: public MyInterface {
 public:
-   Class1(const std::string &name): m_name(name) {}
+  Class1(const std::string &name, ISvcLocator* svc) : 
+    m_name(name), 
+    m_svc(svc) 
+  {}
    virtual ~Class1() {}
 
    virtual void theMethod() const {
@@ -17,6 +20,31 @@ public:
 
 private:
    std::string m_name;
+  ISvcLocator *m_svc;
+};
+
+class Class2: public MyInterface {
+public:
+  Class2(const std::string &name, ISvcLocator* svc) : 
+    m_name(name), 
+    m_svc(svc) 
+  {}
+   virtual ~Class2() {}
+
+   virtual void theMethod() const {
+      std::cout << "I'm Class2 instance called " << m_name << std::endl;
+   }
+
+private:
+   std::string m_name;
+  ISvcLocator *m_svc;
+};
+
+class SvcLocator : public ISvcLocator {
+public:
+  virtual void IsSvcLocator() const {
+    return;
+  }
 };
 
 std::string FactoryName(const std::string& name)
@@ -54,5 +82,6 @@ std::string FactoryName(const std::string& name)
    PLUGINSVC_CNAME(type, serial) PLUGINSVC_CNAME(s_ ## type, serial); \
    }
 
-PLUGINSVC_FACTORY(Class1, MyInterface*(std::string));
+PLUGINSVC_FACTORY(Class1, MyInterface*(std::string, ISvcLocator*));
+PLUGINSVC_FACTORY(Class2, MyInterface*(std::string, ISvcLocator*));
 

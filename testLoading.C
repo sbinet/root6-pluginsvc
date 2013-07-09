@@ -4,6 +4,7 @@
 #include "Riostream.h"
 #include "TH1.h"
 #include <memory>
+#include <stdint.h>
 
 #include "Interfaces.h"
 
@@ -33,14 +34,14 @@
 
 
 void call(MyInterface *p) {
-   std::cout << std::showbase << std::hex << std::nouppercase << (unsigned long)p << std::endl;
+   std::cout << std::showbase << std::hex << std::nouppercase << (uintptr_t)p << std::endl;
    if (p) p->theMethod();
 }
 
 void testLoading()
 {
-   std::auto_ptr<MyInterface> c1a( (MyInterface*)CALL1(Class1, std::string, "c1a") );
-   std::auto_ptr<MyInterface> c2a( (MyInterface*)CALL1(Class2, std::string, "c2a") );
+  std::auto_ptr<MyInterface> c1a( (MyInterface*)CALL2(Class1, std::string, "c1a", ISvcLocator*, NULL) );
+  std::auto_ptr<MyInterface> c2a( (MyInterface*)CALL2(Class2, std::string, "c2a", ISvcLocator*, NULL) );
    call(c1a.get());
    call(c2a.get());
 

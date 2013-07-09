@@ -9,4 +9,12 @@ public:
    virtual void theMethod() const = 0;
 };
 
+class ISvcLocator {
+ public:
+  ISvcLocator() {}
+  virtual ~ISvcLocator() {}
+  virtual void IsSvcLocator() const = 0;
+
+};
+
 #endif
