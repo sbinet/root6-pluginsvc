@@ -39,10 +39,10 @@ void call(MyInterface *p) {
 
 void testLoading()
 {
-   std::auto_ptr<MyInterface> c1a( CALL1(MyInterface*, Class1, std::string, "c1a") );
-   std::auto_ptr<MyInterface> c2a( CALL1(MyInterface*, Class2, std::string, "c2a") );
-   call(c1a.get());
-   call(c2a.get());
+  std::auto_ptr<MyInterface> c1a( CALL2(MyInterface*, Class1, std::string, "c1a", ISvcLocator*, NULL) );
+  std::auto_ptr<MyInterface> c2a( CALL2(MyInterface*, Class2, std::string, "c2a", ISvcLocator*, NULL) );
+  call(c1a.get());
+  call(c2a.get());
 
    // example with the TH1F class
    //std::auto_ptr<TH1> h1( CALL5(TH1*, TH1F, (const char*), "h1", (const char*), "example title", Int_t, 100, Double_t, 0.0, Double_t, 0.0) );
