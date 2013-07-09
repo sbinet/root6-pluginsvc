@@ -4,6 +4,7 @@
 #include "Riostream.h"
 #include "TH1.h"
 #include <memory>
+#include <stdint.h>
 
 #include "Interfaces.h"
 
@@ -33,7 +34,7 @@
 
 
 void call(MyInterface *p) {
-   std::cout << std::showbase << std::hex << std::nouppercase << (unsigned long)p << std::endl;
+   std::cout << std::showbase << std::hex << std::nouppercase << (uintptr_t)p << std::endl;
    if (p) p->theMethod();
 }
 
