@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+/bin/rm -rf *.so *.d
+
+echo "::: create plugins..."
+root -l < run-test-macro
+
+echo "::: test plugins..."
+root -l < run-test-loading
