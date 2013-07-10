@@ -1,0 +1,1 @@
+#include "pluginsvc/PluginFactory.h"

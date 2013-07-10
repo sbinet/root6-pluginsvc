@@ -22,4 +22,16 @@ def build(ctx):
         name = "pluginsvc",
         source = "src/PluginSvc.cxx",
         )
+
+    ctx.build_linklib(
+        name = "MyCompLib",
+        source = "src/Class1.cxx src/Class2.cxx",
+        use = ["pluginsvc",],
+        )
+
+    ctx.build_linklib(
+        name = "MyComp",
+        source = "src/components/*.cxx",
+        use = ["pluginsvc", "MyCompLib", "ROOT"],
+        )
     return
