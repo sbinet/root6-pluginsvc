@@ -13,13 +13,13 @@ void call(MyInterface *p) {
 
 void testLoading()
 {
-   std::auto_ptr<MyInterface> c1a( CALL1(MyInterface*, Class1, std::string("c1a")) );
-   std::auto_ptr<MyInterface> c2a( CALL1(MyInterface*, Class2, std::string("c2a")) );
+  std::auto_ptr<MyInterface> c1a( CALL2(MyInterface*, Class1, std::string("c1a"), NULL) );
+   std::auto_ptr<MyInterface> c2a( CALL2(MyInterface*, Class2, std::string("c2a"), NULL) );
    call(c1a.get());
    call(c2a.get());
 
-   std::auto_ptr<MyInterface> c1b( CALL1(MyInterface*, 1, std::string("c1b")) );
-   std::auto_ptr<MyInterface> c2b( CALL1(MyInterface*, 2, std::string("c2b")) );
+   std::auto_ptr<MyInterface> c1b( CALL2(MyInterface*, 1, std::string("c1b"), NULL) );
+   std::auto_ptr<MyInterface> c2b( CALL2(MyInterface*, 2, std::string("c2b"), NULL) );
    call(c1b.get());
    call(c2b.get());
 
