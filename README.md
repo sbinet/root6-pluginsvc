@@ -12,5 +12,7 @@ $ hwaf pkg co git://github.com/sbinet/root6-pluginsvc pluginsvc
 
 $ hwaf configure
 $ hwaf
+
+$ hwaf run test-loading.exe
 ```
 
